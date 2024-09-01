@@ -20,9 +20,10 @@ while len(correct_guess) < 50:
 # Exit command to exit the while loop and creates a missing states csv file
     if answer_state == "Exit":
         missing_states = []
-        for state in data_state:
-            if state not in correct_guess:
-                missing_states.append(state)
+        missing_states = [state for state in data_state if state not in correct_guess]
+        # for state in data_state:
+        #     if state not in correct_guess:
+        #         missing_states.append(state)
         new_data = pandas.DataFrame(missing_states)
         new_data.to_csv(r"Projects\states_game\us_states_game\states_to_learn.csv")
         break
